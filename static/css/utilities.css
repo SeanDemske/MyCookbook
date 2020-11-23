@@ -1,0 +1,49 @@
+.break {
+    background-color: #7DD060;
+    height: 5px;
+    width: 35%;
+    margin: 5px 0 20px 0;
+}
+
+/* Text */
+.text-primary {
+    color: #353535;
+}
+
+.text-secondary {
+    color: #777777;
+}
+
+.text-light {
+    color: #F9F9F9;
+}
+
+.lead {
+    font-size: 1.5rem;
+}
+
+.header {
+    font-weight: 600;
+    font-size: 3.5rem;
+}
+
+.header-small {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+/* Buttons */
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    background-color: #7DD060;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(105%);
+}
+

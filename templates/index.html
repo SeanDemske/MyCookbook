@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Landing Area -->
+    <section id="landing">
+        <div class="hero">
+            <h1 class="header text-light">Your online cookbook</h1>
+            <div class="input-container">
+                <input type="text" placeholder="What's on the menu today?">
+                <i id="input-arrow" class="fas fa-arrow-circle-right fa-2x text-secondary"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Area -->
+    <section id="about">
+        <div class="how-it-works">
+            <h1 class="header text-primary">How It Works</h1>
+            <div class="break"> </div>
+            <p class="lead">This application is designed to be a simple solution to finding and storing your favorite recipes</p>
+        </div>
+        <div class="instructions">
+            <div class="instruction-column">
+                <div class="heading text-primary">
+                    <div class="instruction-step text-light">1</div>
+                    <div class="header-small">Register</div>
+                </div>
+                <div class="content">
+                    <p>Register to our website and create your own profile. From here you will be able to access your very own cookbook</p>
+                </div>
+                <img src="/static/images/column_placeholder_image.png" alt="">
+            </div>
+            <div class="instruction-column">
+                <div class="heading text-primary">
+                    <div class="instruction-step text-light">2</div>
+                    <div class="header-small">Discover</div>
+                </div>
+                <div class="content">
+                    <p>Register to our website and create your own profile. From here you will be able to access your very own cookbook</p>
+                </div>
+                <img src="/static/images/column_placeholder_image.png" alt="">
+            </div>
+            <div class="instruction-column">
+                <div class="heading text-primary">
+                    <div class="instruction-step text-light">3</div>
+                    <div class="header-small">Save & Edit</div>
+                </div>
+                <div class="content">
+                    <p>Register to our website and create your own profile. From here you will be able to access your very own cookbook</p>
+                </div>
+                <img src="/static/images/column_placeholder_image.png" alt="">
+            </div>
+        </div>
+        <button class="btn header-small text-light">Sign Me Up!</button>
+    </section>
+{% endblock %}

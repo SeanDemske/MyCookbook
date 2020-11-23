@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/72aa28b842.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/utilities.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="/static/css/mobile.css">
+    <title>MyCookbook</title>
+</head>
+<body>
+    <div class="app-container">
+
+        <nav>
+            <div class="container">
+                <div class="nav-logo">
+                    <a href="#" class="text-primary"><i class="fas fa-book text-primary"></i> MyCookbook</a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <a href="" class="text-primary">Sign In</a>
+                        <span class="text-light">|</span>
+                        <a href="" class="text-primary">Sign Up</a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+            Body
+        {% endblock %}
+
+    </div>
+</body>
+</html>
