@@ -24,7 +24,8 @@ body {
 /* Navbar */
 nav {
     position: fixed;
-    width: 2560px;
+    width: 100vw;
+    max-width: 2560px;
     background-color: white;
     padding: .9rem 1rem;
     -webkit-box-shadow: 0px 5px 9px 0px rgba(50, 50, 50, 0.41);
@@ -60,6 +61,7 @@ nav .nav-links a:hover {
 .hero {
     background: url('/static/images/landing_page_herov2.png') no-repeat center center/cover;
     height: 100vh;
+    /* max-height: 1440px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,6 +144,10 @@ nav .nav-links a:hover {
     width: 500px;
     margin: 0 10px;
     padding: 0 20px;
+}
+
+.instruction-column p{
+    min-height: 100px;
 }
 
 .instruction-column:not(:last-child) {

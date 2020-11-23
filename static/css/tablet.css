@@ -1,0 +1,55 @@
+/* Hero */
+nav {
+    padding: .7rem .5rem;
+}
+
+nav .container {
+    padding: 0 25px;
+}
+
+.hero input {
+    width: 400px;
+    padding: 10px 22px;
+    border-radius: 60px;
+    border: 2px solid #e9e9e9;
+    font-size: 1.3rem;
+    margin: 25px 0;
+}
+
+/* About Area */
+#about {
+    margin-top: 75px;
+}
+
+/* Instructions */
+.how-it-works {
+    margin-bottom: 50px;
+}
+
+.instructions {
+    flex-direction: column;
+}
+
+.instructions .heading {
+    margin-bottom: 10px;
+}
+
+.how-it-works p {
+    width: 75%;
+    text-align: center;
+}
+
+.instruction-column {
+    margin: 50px 10px;
+    padding: 5px;
+    width: 400px;
+}
+
+.instruction-column:not(:last-child) {
+    border: none;
+    border-bottom: 2px solid #bbbbbb;
+}
+
+#about .btn {
+    margin: 100px 0;
+}
