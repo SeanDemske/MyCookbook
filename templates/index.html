@@ -5,10 +5,12 @@
     <!-- Landing Area -->
     <section id="landing">
         <div class="hero">
-            <h1 class="header text-light">Your online cookbook</h1>
+            <h1 class="header text-light">Your online cookbook!</h1>
             <div class="input-container">
-                <input type="text" placeholder="What's on the menu today?">
-                <i id="input-arrow" class="fas fa-arrow-circle-right fa-2x text-secondary"></i>
+                <form action="/search" method="GET">
+                    <input type="text" name="q" placeholder="What's on the menu today?">
+                    <i id="input-arrow" class="fas fa-arrow-circle-right fa-2x text-secondary"></i>
+                </form>
             </div>
         </div>
     </section>

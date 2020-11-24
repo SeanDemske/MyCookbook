@@ -28,9 +28,17 @@ nav .container {
     font-size: .7rem;
 }
 
+.recipe-details .details .details-bottom {
+    padding-bottom: 2px;
+}
+
 .recipe-details .label {
-    padding: 10px;
+    padding: 5px;
     font-size: .8rem;
+}
+
+.recipe-details .details {
+    padding-left: 5px;
 }
 
 .recipe-card img {
@@ -39,7 +47,8 @@ nav .container {
     border-radius: 15px 0px 0px 15px;
 }
 
-.recipe-details .details .details-bottom .links a:last-of-type {
+.recipe-details .details .details-bottom .links > :not(:last-child),
+#annoying-pipe {
     display: none;
 }
 

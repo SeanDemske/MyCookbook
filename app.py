@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
+from secrets import APP_ID, APP_KEY
 import requests
 import json
 
 app = Flask(__name__)
-
 
 # View functions
 #----------------------------------------------------------------------
@@ -22,8 +22,8 @@ def browse():
             "https://api.edamam.com/search",
             params={
                 "q": "chicken",
-                "app_id": "85ac62e0",
-                "app_key": "6b7cae050360bfe22e3783935fba9187",
+                "app_id": APP_ID,
+                "app_key": APP_KEY,
                 "to": "20"
             }
         )
@@ -37,6 +37,24 @@ def ui():
     """Testing UI"""
 
     return render_template("search_results.html")
+
+@app.route("/search")
+def search_results():
+    """Displays a list of search results"""
+
+    search_query = request.args["q"]
+    resp = requests.get(
+        "https://api.edamam.com/search",
+        params={
+            "q": search_query,
+            "app_id": APP_ID,
+            "app_key": APP_KEY,
+            "to": "20"
+        }
+    )
+
+    results = resp.json().get("hits")
+    return render_template("search_results.html", results=results, query=search_query)
 
 # /search?q="chicken" GET
 
