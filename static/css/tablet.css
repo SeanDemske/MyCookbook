@@ -53,3 +53,26 @@ nav .container {
 #about .btn {
     margin: 100px 0;
 }
+
+/* Search Results */
+.search-results .container {
+    width: 100%;
+    padding: 10px;
+}
+
+.search-results h1 {
+    font-size: 1.8rem;
+}
+
+.recipe-details .label {
+    font-size: 1rem;
+}
+
+.badge {
+    font-size: .7rem;
+}
+
+.recipe-details .details .details-top {
+    display: hidden;
+}
+

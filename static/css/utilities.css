@@ -18,6 +18,10 @@
     color: #F9F9F9;
 }
 
+.text-accent {
+    color: #7DD060;
+}
+
 .lead {
     font-size: 1.5rem;
 }
@@ -30,6 +34,28 @@
 .header-small {
     font-weight: 600;
     font-size: 2.5rem;
+}
+
+
+/* Links */
+.link-tag {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-tag:hover {
+    color: #575757;
+    border-bottom: 3px solid #7DD060;
+}
+
+/* Badges */
+.badge {
+    background-color: #7DD060;
+    color: #fff;
+    border-radius: 35px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 /* Buttons */
@@ -45,5 +71,91 @@
 
 .btn:hover {
     filter: brightness(105%);
+}
+
+/* Recipe Card */
+.recipe-card {
+    height: 170px;
+    width: 48%;
+    margin: 10px 0px;
+    display: flex;
+    border-radius: 25px;
+    -webkit-box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15); 
+    /* transition: box-shadow .5s; */
+    transition: all .5s ease;
+    box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15);
+}
+
+.recipe-card:hover {
+    box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.35);
+}
+
+.recipe-card img {
+    height: 100%;
+    width: auto;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.recipe-details {
+    width: 100%;
+}
+
+.recipe-details .label {
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: #fff;
+    border-radius: 0 15px 0 0;
+}
+
+.recipe-details .details {
+    height: 75%;
+    padding: 10px;
+    padding-left: 15px;
+    background-color: #f1f1f1;
+    border-radius: 0px 0px 25px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-details .details .details-top {
+    height: 50%;
+}
+
+.recipe-details .details .details-bottom {
+    height: 50%;
+    display: flex;
+    font-size: 1.2rem;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.recipe-details .details .details-bottom .health-labels {
+    width: 40%;
+    overflow: hidden;
+}
+
+.recipe-details .details .details-bottom .links {
+    width: 60%;
+    padding-right: 10px;
+    text-align: right;
+}
+
+/* Recipe Card Stacking Behavior */
+@media screen and (max-width: 1550px) {
+    .recipe-card {
+        width: 100%;
+    }
+}
+
+/* Debug Tools */
+.dev-outline {
+    border: 2px solid black;
 }
 

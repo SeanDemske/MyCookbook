@@ -104,7 +104,6 @@ nav .nav-links a:hover {
 
 /* About Area */
 #about {
-    margin-top: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,6 +114,7 @@ nav .nav-links a:hover {
     max-width: 1400px;
     margin: auto;
     margin-bottom: 100px;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,5 +176,33 @@ nav .nav-links a:hover {
 }
 
 #about .btn {
-    margin: 200px 0;
+    margin: 150px 0;
+}
+
+/* Search Results Page */
+.search-results {
+    padding-top: 50px;
+}
+
+.search-results .container {
+    padding-top: 50px;
+    min-height: 100vh;
+    width: 80%;
+    margin: auto;
+    padding: 50px 100px;
+    background-color: rgb(245, 245, 245);
+}
+
+/* Expanding container for smaller resolutions */
+@media screen and (max-width: 1775px) {
+    .search-results .container {
+        width: 90%;
+    }
+}
+
+.search-results .recipes-container {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

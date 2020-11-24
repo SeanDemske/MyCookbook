@@ -22,3 +22,31 @@ nav .container {
     text-align: center;
     width: 300px;
 }
+
+.recipe-details .details .details-bottom .links {
+    padding-right: 5px;
+    font-size: .7rem;
+}
+
+.recipe-details .label {
+    padding: 10px;
+    font-size: .8rem;
+}
+
+.recipe-card img {
+    width: 80px;
+    object-fit: cover;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.recipe-details .details .details-bottom .links a:last-of-type {
+    display: none;
+}
+
+.badge {
+    font-size: .4rem;
+}
+
+.recipe-card {
+    height: 100px;
+}
