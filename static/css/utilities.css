@@ -22,6 +22,10 @@
     color: #7DD060;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .lead {
     font-size: 1.5rem;
 }
@@ -34,6 +38,19 @@
 .header-small {
     font-weight: 600;
     font-size: 2.5rem;
+}
+
+/* Font Weight */
+.f-400 {
+    font-weight: 400;
+}
+
+.f-600 {
+    font-weight: 600;
+}
+
+.f-700 {
+    font-weight: 700;
 }
 
 .link-tag.bold {
@@ -49,7 +66,7 @@
 
 .link-tag:hover {
     color: #575757;
-    border-bottom: 3px solid #7DD060;
+    border-bottom: 2px solid #7DD060;
 }
 
 /* Badges */
@@ -67,8 +84,9 @@
 .btn {
     font-family: 'Poppins', sans-serif;
     background-color: #7DD060;
+    color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 14px;
     border: none;
     cursor: pointer;
 }
@@ -83,10 +101,10 @@
     width: 48%;
     margin: 10px 0px;
     display: flex;
-    border-radius: 25px;
+    border-radius: 10px 0px 0px 10px;
     -webkit-box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15); 
     /* transition: box-shadow .5s; */
-    transition: all .5s ease;
+    transition: box-shadow .5s ease;
     box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15);
 }
 
@@ -97,7 +115,7 @@
 .recipe-card img {
     height: 100%;
     width: auto;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 10px 0px 0px 10px;
 }
 
 .recipe-details {
@@ -115,7 +133,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     background: #fff;
-    border-radius: 0 15px 0 0;
+    /* border-radius: 0 5px 0 0; */
 }
 
 /* Hide calories on sub 350px */

@@ -206,3 +206,58 @@ nav .nav-links a:hover {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+
+/* API Recipe Detail Page */
+.api-recipe-detail .container {
+    min-height: 100vh;
+    width: 80%;
+    margin: auto;
+    padding: 100px 100px;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.api-recipe-detail .header {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.api-recipe-detail img {
+    border-radius: 50%;
+    height: 125px;
+    width: 125px;
+    margin-right: 10px;
+    border: 4px solid #7DD060;
+}
+
+.api-recipe-detail .btn {
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+.api-recipe-detail .ingredients,
+.api-recipe-detail .nutritional-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.api-recipe-detail li {
+    list-style-type: none;
+}
+
+.api-recipe-detail .link-tag {
+    color: rgb(218, 132, 35)
+}
+
+.api-recipe-detail .source-url {
+    margin: 100px 0;
+    word-break:break-all;
+}

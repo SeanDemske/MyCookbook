@@ -6,16 +6,16 @@
             <h1 class="header">Showing results for <span class="text-accent">"{{ query }}"</span></h1>
             <div class="recipes-container">
                 {% for result in results %}
-                <div class="recipe-card">
+                <div class="recipe-card" data-id="{{ result.recipe.uri }}">
                     <img src="{{ result.recipe.image }}" alt="">
                     <div class="recipe-details">
                         <div class="label">
-                            <span class="text-primary">{{ result.recipe.label|truncate(20, True) }}</span>
+                            <span class="text-primary">{{ result.recipe.label|truncate(15, True) }}</span>
                             <span class="text-primary">kcal {{ result.recipe.calories|round|int }}</span>
                         </div>
                         <div class="details">
                             <div class="details-top text-primary">
-                                <a href="{{ result.recipe.url }}" class="link-tag text-primary bold"><span class="text-accent">Source</span> ({{ result.recipe.source }})</a>
+                                <a href="{{ result.recipe.url }}" class="link-tag text-primary bold">Source (<span class="text-accent">{{ result.recipe.source }}</span>)</a>
                             </div>
                             <div class="details-bottom">
                                 <div class="health-labels">
@@ -26,7 +26,7 @@
                                 <div class="links">
                                     <a href="" class="link-tag text-primary">+Save Recipe</a>
                                     <span>|</span>
-                                    <a href="" class="link-tag text-primary">View Recipe</a>
+                                    <a href='/recipes?r={{ result.recipe.uri | urlencode }}' class="link-tag text-primary">View Recipe</a>
                                 </div>
                             </div>
                         </div>

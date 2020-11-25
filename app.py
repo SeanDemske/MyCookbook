@@ -56,6 +56,24 @@ def search_results():
     results = resp.json().get("hits")
     return render_template("search_results.html", results=results, query=search_query)
 
+@app.route("/recipes")
+def api_recipe_detail():
+    """Displays the details of a recipe"""
+
+    search_query = request.args["r"]
+    resp = requests.get(
+        "https://api.edamam.com/search",
+        params={
+            "r": search_query,
+            "app_id": APP_ID,
+            "app_key": APP_KEY
+        }
+    )
+
+    recipe = resp.json()[0]
+
+    return render_template("api_recipe_detail.html", recipe=recipe)
+
 # /search?q="chicken" GET
 
 # /profile/<username> GET

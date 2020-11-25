@@ -59,3 +59,21 @@ nav .container {
 .recipe-card {
     height: 100px;
 }
+
+.api-recipe-detail .source-url {
+    margin: 20px 0;
+}
+
+.api-recipe-detail .container {
+    padding: 20px;
+    padding-top: 100px;
+}
+
+.api-recipe-detail .header {
+    font-size: 1rem;
+}
+
+.api-recipe-detail img {
+    width: 80px;
+    height: 80px;
+}

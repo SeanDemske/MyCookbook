@@ -76,3 +76,7 @@ nav .container {
     display: hidden;
 }
 
+/* API Recipe Detail */
+.api-recipe-detail .container {
+    width: 100%;
+}

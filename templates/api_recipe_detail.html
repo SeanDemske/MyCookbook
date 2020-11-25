@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="api-recipe-detail">
+        <div class="container">
+            <div class="header text-primary">
+                <img src="{{ recipe.image }}" alt="Image of {{ recipe.label }}">
+                <div class="title text-primary">{{ recipe.label }}</div>
+            </div>
+            <p class="text-secondary">
+                {% if recipe.totalTime %}
+                    {{ recipe.totalTime }} mins,
+                {% endif %}
+                {% if recipe.yield %}
+                    serves {{ recipe.yield|round|int }}
+                {% endif %}
+            </p>
+            <div class="break"></div>
+            <button class="btn f-600"><i class="fas fa-book text-light"></i> Add to cookbook</button>
+            <div class="ingredients">
+                <h3 class="text-primary underline">Ingredients</h3>
+                <ul>
+                    {% for ingredient in recipe.ingredientLines %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="nutritional-info">
+                <h3 class="text-primary underline">Nutritional Information</h3>
+                <ul>
+                    <li>Calories: {{ recipe.totalNutrients.ENERC_KCAL.quantity|round|int }} kcal</li>
+                    <li>Fat: {{ recipe.totalNutrients.FAT.quantity|round|int }}{{ recipe.totalNutrients.FAT.unit }}</li>
+                    <li>Carbs: {{ recipe.totalNutrients.CHOCDF.quantity|round|int }}{{ recipe.totalNutrients.CHOCDF.unit }}</li>
+                    <li>Protein: {{ recipe.totalNutrients.PROCNT.quantity|round|int }}{{ recipe.totalNutrients.PROCNT.unit }}</li>
+                    <li>Saturated Fat: {{ recipe.totalNutrients.FASAT.quantity|round|int }}{{ recipe.totalNutrients.FASAT.unit }}</li>
+                    <li>Trans Fat: {{ recipe.totalNutrients.FATRN.quantity|round|int }}{{ recipe.totalNutrients.FATRN.unit }}</li>
+                    <li>Fiber: {{ recipe.totalNutrients.FIBTG.quantity|round|int }}{{ recipe.totalNutrients.FIBTG.unit }}</li>
+                    <li>Sugar: {{ recipe.totalNutrients.SUGAR.quantity|round|int }}{{ recipe.totalNutrients.SUGAR.unit }}</li>
+                    <li>Cholesterol: {{ recipe.totalNutrients.CHOLE.quantity|round|int }}{{ recipe.totalNutrients.CHOLE.unit }}</li>
+                    <li>Sodium: {{ recipe.totalNutrients.NA.quantity|round|int }}{{ recipe.totalNutrients.NA.unit }}</li>
+                </ul>
+            </div>
+            <div class="source-url">
+                <a href="{{ recipe.url }}" class="link-tag">{{ recipe.url }}</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
