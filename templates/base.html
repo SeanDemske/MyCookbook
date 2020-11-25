@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/css/utilities.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" media="screen and (max-width: 1250px)" href="/static/css/tablet.css">
-    <link rel="stylesheet" media="screen and (max-width: 550px)" href="/static/css/mobile.css">
+    <link rel="stylesheet" media="screen and (max-width: 650px)" href="/static/css/mobile.css">
     <title>MyCookbook</title>
 </head>
 <body>
@@ -17,6 +17,12 @@
             <div class="container">
                 <div class="nav-logo">
                     <a href="/" class="text-primary"><i class="fas fa-book text-primary"></i> MyCookbook</a>
+                </div>
+                <div class="input-container">
+                    <form action="/search" method="GET">
+                        <input type="text" name="q">
+                        <i id="input-arrow" class="fas fa-arrow-circle-right text-secondary"></i>
+                    </form>
                 </div>
                 <div class="nav-links">
                     <ul>

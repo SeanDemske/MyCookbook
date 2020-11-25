@@ -42,7 +42,8 @@ nav .container {
 }
 
 .recipe-card img {
-    width: 80px;
+    width: 70px;
+    height: 100px;
     object-fit: cover;
     border-radius: 15px 0px 0px 15px;
 }
@@ -71,9 +72,4 @@ nav .container {
 
 .api-recipe-detail .header {
     font-size: 1rem;
-}
-
-.api-recipe-detail img {
-    width: 80px;
-    height: 80px;
 }

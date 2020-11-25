@@ -97,7 +97,7 @@
 
 /* Recipe Card */
 .recipe-card {
-    height: 170px;
+    height: 140px;
     width: 48%;
     margin: 10px 0px;
     display: flex;
@@ -113,8 +113,8 @@
 }
 
 .recipe-card img {
-    height: 100%;
-    width: auto;
+    height: 140px;
+    width: 140px;
     border-radius: 10px 0px 0px 10px;
 }
 
