@@ -1,9 +1,20 @@
 from flask import Flask, render_template, request, jsonify, redirect
 from secrets import APP_ID, APP_KEY
+from models import db, connect_db, User, Recipe
 import requests
 import json
 
 app = Flask(__name__)
+
+# Get DB_URI from environ variable (useful for production/testing) or,
+# if not set there, use development local db.
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    os.environ.get('DATABASE_URL', 'postgresql://postgres:developer@localhost:5432/mycookbook'))
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "secret")
 
 # View functions
 #----------------------------------------------------------------------
@@ -14,27 +25,9 @@ def homepage():
 
     return render_template("index.html")
 
-@app.route("/browse")
-def browse():
-    """Testing displayed collection"""
-
-    resp = requests.get(
-            "https://api.edamam.com/search",
-            params={
-                "q": "chicken",
-                "app_id": APP_ID,
-                "app_key": APP_KEY,
-                "to": "20"
-            }
-        )
-    
-    results = resp.json()["hits"]
-
-    return render_template("search_results.html", results=results)
-
 @app.route("/ui")
 def ui():
-    """Testing UI"""
+    """Route for testing UI"""
 
     return render_template("search_results.html")
 
