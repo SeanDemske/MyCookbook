@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="signup-page">
+        <div class="container">
+            <div class="signup-content">
+                <div class="header text-primary">
+                    <i class="fas fa-book text-primary"></i> MyCookbook
+                </div>
+                <div class="break"></div>
+                <div class="lead underline">Register</div>
+                <form action="">
+                    <div class="form-control">
+                        <label class="f-600 text-primary" for="username">Username</label>
+                        <br>
+                        <input type="text" id="username" name="username" placeholder="John Doe">
+                    </div>
+                    <div class="form-control">
+                        <label class="f-600 text-primary" for="email">Email</label>
+                        <br>
+                        <input type="text" id="email" name="email" placeholder="johndoe@gmail.com">
+                    </div>
+                    <div class="form-control">
+                        <label class="f-600 text-primary" for="password">Password</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="********">
+                    </div>
+                    <div class="form-control">
+                        <label class="f-600 text-primary" for="password">Confirm Password</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="********">
+                    </div>
+                </form>
+                <button class="btn f-400">Register</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

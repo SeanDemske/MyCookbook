@@ -28,16 +28,45 @@
             <div class="nutritional-info">
                 <h3 class="text-primary underline">Nutritional Information</h3>
                 <ul>
-                    <li>Calories: {{ recipe.totalNutrients.ENERC_KCAL.quantity|round|int }} kcal</li>
-                    <li>Fat: {{ recipe.totalNutrients.FAT.quantity|round|int }}{{ recipe.totalNutrients.FAT.unit }}</li>
-                    <li>Carbs: {{ recipe.totalNutrients.CHOCDF.quantity|round|int }}{{ recipe.totalNutrients.CHOCDF.unit }}</li>
-                    <li>Protein: {{ recipe.totalNutrients.PROCNT.quantity|round|int }}{{ recipe.totalNutrients.PROCNT.unit }}</li>
-                    <li>Saturated Fat: {{ recipe.totalNutrients.FASAT.quantity|round|int }}{{ recipe.totalNutrients.FASAT.unit }}</li>
-                    <li>Trans Fat: {{ recipe.totalNutrients.FATRN.quantity|round|int }}{{ recipe.totalNutrients.FATRN.unit }}</li>
-                    <li>Fiber: {{ recipe.totalNutrients.FIBTG.quantity|round|int }}{{ recipe.totalNutrients.FIBTG.unit }}</li>
-                    <li>Sugar: {{ recipe.totalNutrients.SUGAR.quantity|round|int }}{{ recipe.totalNutrients.SUGAR.unit }}</li>
-                    <li>Cholesterol: {{ recipe.totalNutrients.CHOLE.quantity|round|int }}{{ recipe.totalNutrients.CHOLE.unit }}</li>
-                    <li>Sodium: {{ recipe.totalNutrients.NA.quantity|round|int }}{{ recipe.totalNutrients.NA.unit }}</li>
+                    {% if recipe.totalNutrients.ENERC_KCAL %}
+                        <li>Calories: {{ recipe.totalNutrients.ENERC_KCAL.quantity|round|int }} kcal</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.FAT %}
+                        <li>Fat: {{ recipe.totalNutrients.FAT.quantity|round|int }}{{ recipe.totalNutrients.FAT.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.CHOCDF %}
+                        <li>Carbs: {{ recipe.totalNutrients.CHOCDF.quantity|round|int }}{{ recipe.totalNutrients.CHOCDF.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.PROCNT %}
+                        <li>Protein: {{ recipe.totalNutrients.PROCNT.quantity|round|int }}{{ recipe.totalNutrients.PROCNT.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.FASAT %}
+                        <li>Saturated Fat: {{ recipe.totalNutrients.FASAT.quantity|round|int }}{{ recipe.totalNutrients.FASAT.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.FATRN %}
+                        <li>Trans Fat: {{ recipe.totalNutrients.FATRN.quantity|round|int }}{{ recipe.totalNutrients.FATRN.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.FIBTG %}
+                        <li>Fiber: {{ recipe.totalNutrients.FIBTG.quantity|round|int }}{{ recipe.totalNutrients.FIBTG.unit }}</li>
+                    {% endif %}
+
+                    {% if recipe.totalNutrients.SUGAR %}
+                        <li>Sugar: {{ recipe.totalNutrients.SUGAR.quantity|round|int }}{{ recipe.totalNutrients.SUGAR.unit }}</li>
+                    {% endif %}
+                    
+                    {% if recipe.totalNutrients.CHOLE %}
+                        <li>Cholesterol: {{ recipe.totalNutrients.CHOLE.quantity|round|int }}{{ recipe.totalNutrients.CHOLE.unit }}</li>
+                    {% endif %}
+                    
+                    {% if recipe.totalNutrients.NA %}
+                        <li>Sodium: {{ recipe.totalNutrients.NA.quantity|round|int }}{{ recipe.totalNutrients.NA.unit }}</li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="source-url">

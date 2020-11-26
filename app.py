@@ -28,7 +28,7 @@ def homepage():
 def ui():
     """Route for testing UI"""
 
-    return render_template("search_results.html")
+    return render_template("signup.html")
 
 @app.route("/search")
 def search_results():

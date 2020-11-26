@@ -88,7 +88,6 @@ nav input {
 
 nav input:focus {
     outline: none;
-    /* border-bottom: 1px solid #aaaaaa; */
 }
 
 nav .input-container {
@@ -110,7 +109,7 @@ nav .input-container #input-arrow {
 .hero {
     background: url('/static/images/landing_page_herov2.png') no-repeat center center/cover;
     height: 100vh;
-    /* max-height: 1440px; */
+    max-height: 1440px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -309,4 +308,57 @@ nav .input-container #input-arrow {
 .api-recipe-detail .source-url {
     margin: 100px 0;
     word-break:break-all;
+}
+
+/* Sign Up */
+.signup-page .container {
+    min-height: 100vh;
+    width: 80%;
+    margin: auto;
+    padding: 100px 100px;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-page .header {
+    font-size: 2rem;
+    margin-top: 50px;
+}
+
+.signup-page .signup-content {
+    width: 600px;
+    padding: 0 50px;
+    background-color: F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    -webkit-box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.25); 
+    box-shadow: 0px 4px 31px -4px rgba(0,0,0,0.25);
+}
+
+.signup-page .signup-content form {
+    width: 100%;
+    margin: 50px 0;
+}
+
+.signup-page .signup-content label {
+    font-size: 1.3rem;
+}
+
+.signup-page .signup-content input {
+    width: 100%;
+    outline: none;
+    border: 2px solid #b8b8b8;
+    border-radius: 10px;
+    height: 30px;
+    padding: 5px;
+}
+
+.signup-content button {
+    font-size: 1.3rem;
+    margin-bottom: 50px;
 }
