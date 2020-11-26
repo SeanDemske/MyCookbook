@@ -1,8 +1,7 @@
+import os, requests, json
 from flask import Flask, render_template, request, jsonify, redirect
 from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
-import requests
-import json
 
 app = Flask(__name__)
 
@@ -42,7 +41,7 @@ def search_results():
             "q": search_query,
             "app_id": APP_ID,
             "app_key": APP_KEY,
-            "to": "20"
+            "to": "30"
         }
     )
 

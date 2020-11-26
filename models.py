@@ -37,14 +37,14 @@ class Recipe(db.Model):
                     nullable=False,
                     unique=True)
     recipe_image_url = db.Column(db.Text,
-                    default="/static/images/recipe_placeholder.jpg")
+                    default="/static/images/recipe_placeholder.png")
     source_url = db.Column(db.Text,
                     nullable=True)
-    servings = db.Columns(db.Integer,
+    servings = db.Column(db.Integer,
                     nullable=True)
     calories = db.Column(db.Integer,
                     nullable=True)
-    total_minutes = db.Column(db.Intger,
+    total_minutes = db.Column(db.Integer,
                     nullable=True)
     ingredient_list = db.Column(db.Text,
                     nullable=False)

@@ -76,6 +76,7 @@ nav input {
         font-size: 1rem;
         height: 10px;
         padding: 10px;
+        width: 175px;
     }
 }
 
@@ -87,7 +88,7 @@ nav input {
 
 nav input:focus {
     outline: none;
-    border: 3px solid #7DD060;
+    /* border-bottom: 1px solid #aaaaaa; */
 }
 
 nav .input-container {
