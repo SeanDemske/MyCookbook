@@ -2,6 +2,7 @@ import os, requests, json
 from flask import Flask, render_template, request, jsonify, redirect
 from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
+from forms import RegisterForm, LoginForm
 
 app = Flask(__name__)
 
@@ -24,11 +25,21 @@ def homepage():
 
     return render_template("index.html")
 
-@app.route("/ui")
-def ui():
-    """Route for testing UI"""
+@app.route("/register")
+def user_register_form():
+    """Display register page"""
 
-    return render_template("signup.html")
+    register_form = RegisterForm()
+
+    return render_template("signin_signup.html", form=register_form)
+
+@app.route("/login")
+def user_login_form():
+    """Display login page"""
+
+    login_form = LoginForm()
+
+    return render_template("signin_signup.html", form=login_form)
 
 @app.route("/search")
 def search_results():
@@ -80,4 +91,15 @@ def api_recipe_detail():
 
 # /signin GET/POST
 
+
+
+# Developer
+#----------------------------------------------------------------------
+
+@app.route("/ui")
+def ui():
+    """Route for testing UI"""
+
+
+    return render_template("signup.html")
 

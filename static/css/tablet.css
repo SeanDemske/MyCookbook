@@ -80,3 +80,10 @@ nav .container {
 .api-recipe-detail .container {
     width: 100%;
 }
+
+/* Signin/Sign Up */
+.signup-page .container {
+    width: 100%;
+    padding: 10px;
+}
+

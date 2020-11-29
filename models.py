@@ -48,6 +48,8 @@ class Recipe(db.Model):
                     nullable=True)
     ingredient_list = db.Column(db.Text,
                     nullable=False)
+    recipe_notes = db.Column(db.Text,
+                    nullable=True)
     cookbook_owner = db.Column(db.String(20),
                     db.ForeignKey("users.username", ondelete='cascade'),
                     nullable=False)

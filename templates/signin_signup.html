@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="signup-page">
+        <div class="container">
+            <div class="signup-content">
+                <div class="header text-primary">
+                    <i class="fas fa-book text-primary"></i> MyCookbook
+                </div>
+                <div class="break"></div>
+                <div class="lead underline">{{ form.form_title }}</div>
+                <form action="">
+                    {{ form.hidden_tag() }}
+
+                    {% for field in form if field.widget.input_type != 'hidden' %}
+                      {% for error in field.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                      {% endfor %}
+                      {{ field.label }}
+                      {{ field(placeholder=field.label.text, class="form-control") }}
+                    {% endfor %}
+                    <div class="container">
+                        <button class="btn f-400">{{ form.form_title }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

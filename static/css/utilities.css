@@ -22,6 +22,10 @@
     color: #7DD060;
 }
 
+.text-danger {
+    color: rgb(182, 71, 51)
+}
+
 .underline {
     text-decoration: underline;
 }
