@@ -55,12 +55,14 @@ nav .container {
 }
 
 /* Search Results */
-.search-results .container {
+.search-results .container,
+.cookbook-page .container {
     width: 100%;
     padding: 10px;
 }
 
-.search-results h1 {
+.search-results h1,
+.cookbook-page h1 {
     font-size: 1.8rem;
 }
 

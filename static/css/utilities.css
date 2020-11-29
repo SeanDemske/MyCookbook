@@ -30,6 +30,10 @@
     text-decoration: underline;
 }
 
+.no-underline {
+    text-decoration: none;
+}
+
 .lead {
     font-size: 1.5rem;
 }
@@ -83,6 +87,10 @@
     font-weight: 600;
 }
 
+.badge-danger {
+    background-color: rgb(182, 71, 51);
+}
+
 /* Buttons */
 
 .btn {
@@ -100,6 +108,13 @@
 }
 
 /* Recipe Card */
+.recipes-container {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .recipe-card {
     height: 140px;
     width: 48%;

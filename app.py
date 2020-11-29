@@ -77,19 +77,22 @@ def api_recipe_detail():
 
     return render_template("api_recipe_detail.html", recipe=recipe)
 
-# /search?q="chicken" GET
 
-# /profile/<username> GET
+# User
+#----------------------------------------------------------------------
 
-# /profile/<username>/add GET/POST
+@app.route("/cookbook/<username>")
+def usr(username):
+    """Route for testing UI"""
 
-# /recipes/<recipe_id> GET
+    return str("usr")
 
-# /recipes/<recipe_id>/add POST
 
-# /signup GET/POST
+# cookbook/<username> GET
 
-# /signin GET/POST
+# cookbook/<username>/add GET/POST
+
+# cookbook/<username>/<recipe_id> GET
 
 
 
@@ -100,6 +103,5 @@ def api_recipe_detail():
 def ui():
     """Route for testing UI"""
 
-
-    return render_template("signup.html")
+    return render_template("user/cookbook.html")
 
