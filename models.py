@@ -1,7 +1,9 @@
 """Models for User and Recipes"""
 
+from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
+bcrypt = Bcrypt()
 db = SQLAlchemy()
 
 def connect_db(app):
@@ -24,6 +26,16 @@ class User(db.Model):
     email = db.Column(db.Text,
                     nullable=True,
                     unique=True)
+
+    @classmethod
+    def register(cls, username, email, password):
+        """Creates a new user and adds it to the database. Returns user instance"""
+
+        hashed_password = bcrypt.generate_password_hash(password).decode("UTF-8")
+        user = User(username=username, email=email, password=hashed_password)
+        db.session.add(user)
+
+        return user
     
 class Recipe(db.Model):
     """Recipe"""

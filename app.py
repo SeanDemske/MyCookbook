@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify, redirect
 from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
 from forms import RegisterForm, LoginForm
+from utilities import password_confirmed
 
 app = Flask(__name__)
 
@@ -16,6 +17,8 @@ app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "secret")
 
+connect_db(app)
+
 # View functions
 #----------------------------------------------------------------------
 
@@ -25,11 +28,27 @@ def homepage():
 
     return render_template("index.html")
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def user_register_form():
-    """Display register page"""
+    """Handles user registration"""
 
     register_form = RegisterForm()
+    
+    if register_form.validate_on_submit():
+        try:
+            if password_confirmed(register_form.password.data, register_form.password_confirm.data):
+                user = User.register(
+                    username=register_form.username.data,
+                    email=register_form.email.data,
+                    password=register_form.password.data
+                )
+                db.session.commit()
+
+            else:
+                print("passwords don't match")
+        except IntegrityError:
+            print ("Error")
+
 
     return render_template("signin_signup.html", form=register_form)
 
