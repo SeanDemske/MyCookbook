@@ -92,12 +92,13 @@
 
 /* Badges */
 .badge {
-    background-color: #7DD060;
-    color: #fff;
+    background-color: transparent;
+    color: #7DD060;
     border-radius: 35px;
-    padding: 5px 10px;
+    padding: 2px 10px;
     font-size: 1rem;
     font-weight: 600;
+    border: 2px solid #7DD060
 }
 
 .badge-danger {
@@ -205,11 +206,12 @@
     display: flex;
     font-size: 1.2rem;
     align-items: flex-end;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
 }
 
 .recipe-details .details .details-bottom .health-labels {
     width: 40%;
+    height: 100%;
     overflow: hidden;
 }
 

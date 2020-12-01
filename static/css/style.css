@@ -181,6 +181,12 @@ nav .input-container #input-arrow {
     justify-content: space-between;
 }
 
+.instructions img {
+    border-radius: 5px;
+    -webkit-box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15); 
+    box-shadow: 5px 4px 23px 0px rgba(0,0,0,0.15);
+}
+
 .instructions .heading {
     display: flex;
     align-items: center;
