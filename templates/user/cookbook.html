@@ -4,7 +4,9 @@
     <section class="cookbook-page">
         <div class="container">
             <h1 class="header text-primary"><i class="fas fa-book-open"></i> {{ g.user.username }}'s Recipes</h1>
-            <p class="text-secondary subtitle">Registered 11/27/2020</p>
+            <form action="/{{ g.user.username }}/delete" method="POST">
+                <button class="text-danger btn btn-outline">Delete Account</button>
+            </form>
 
             <div class="recipes-container">
                 {% for recipe in recipes %}
@@ -26,7 +28,7 @@
                                     </form>
                                 </div>
                                 <div class="links">
-                                    <a href="" class="link-tag text-primary">Edit Recipe</a>
+                                    <a href="/{{g.user.username}}/cookbook/{{ recipe.title }}/edit" class="link-tag text-primary">Edit Recipe</a>
                                     <span>|</span>
                                     <a href='/{{g.user.username}}/cookbook/{{ recipe.title }}' class="link-tag text-primary">View Recipe</a>
                                 </div>
@@ -36,9 +38,6 @@
                 </div>
             {% endfor %}
             </div>  
-
-            <button class="btn btn-outline inline-block f-600">+Create Recipe</button>
-
         </div>
     </section>
 {% endblock %}

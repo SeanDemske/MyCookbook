@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="edit-recipe-page">
+        <div class="container">
+            <div class="edit-content">
+                <div class="header text-primary">
+                    <i class="fas fa-book text-primary"></i> MyCookbook
+                </div>
+                <div class="break"></div>
+                <div class="lead underline">Edit Content</div>
+                <form action="/{{ g.user.username }}/cookbook/{{ recipe.title }}/edit" method="POST">
+                    {{ form.hidden_tag() }}
+
+                    {% for field in form if field.widget.input_type != 'hidden' %}
+                      {{ field.label }}
+                      {% for error in field.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                      {% endfor %}
+                      {{ field(placeholder=field.label.text, class="form-control") }}
+                    {% endfor %}
+                    <div class="container">
+                        <button class="btn f-400">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -17,3 +17,10 @@ class LoginForm(FlaskForm):
     form_title = "Login"
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
+
+class RecipeEditForm(FlaskForm):
+    """Edit Recipe"""
+
+    title = StringField("Title", validators=[DataRequired()])
+    recipe_image = StringField("Image URL", validators=[DataRequired()])
+    additional_notes = TextAreaField("Additional Notes")

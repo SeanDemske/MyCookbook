@@ -19,12 +19,20 @@
             <button class="btn f-600"><i class="fas fa-book text-light"></i> Remove from cookbook</button>
             <div class="ingredients">
                 <h3 class="text-primary underline">Ingredients</h3>
-                <ul>
+                <div>
                     {% autoescape false %}
                     <p>{{ recipe.ingredient_list | replace("\n", "<br/>")  }}</p> 
                     {% endautoescape %}
-                </ul>
+                </div>
             </div>
+            {% if recipe.recipe_notes %}
+            <div class="additional-notes">
+                <h3 class="text-primary underline">Additional Notes</h3>
+                <div>
+                    <p>{{ recipe.recipe_notes }}</p>
+                </div>
+            </div>
+            {% endif %}
             <div class="source-url">
                 <a href="{{ recipe.source_url }}" class="link-tag">Recipe Website</a>
             </div>

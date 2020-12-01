@@ -29,6 +29,7 @@ class User(db.Model):
                     unique=True)
 
     recipes = db.relationship("Recipe",
+                    cascade="all, delete-orphan",
                     backref="user",
                     lazy='dynamic'
     )

@@ -2,7 +2,7 @@ import os, requests, json
 from flask import Flask, render_template, request, jsonify, redirect, session, g
 from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
-from forms import RegisterForm, LoginForm
+from forms import RegisterForm, LoginForm, RecipeEditForm
 from utilities import password_confirmed
 from sqlalchemy.exc import IntegrityError
 
@@ -144,9 +144,28 @@ def api_recipe_detail():
 def cookbook_profile(username):
     """Route to take the user to their profile/cookbook"""
 
+    if not g.user:
+        return redirect("/login")
+
     saved_recipes = g.user.recipes
 
     return render_template("user/cookbook.html", recipes=saved_recipes)
+
+@app.route("/<username>/delete", methods=["POST"])
+def delete_profile(username):
+
+    if not g.user:
+        return redirect("/login")
+
+    if not g.user.username == username:
+        return redirect("/")
+
+    db.session.delete(g.user)
+    db.session.commit()
+    do_logout()
+
+    return redirect("/")
+
 
 @app.route("/<username>/cookbook/save", methods=["POST", "GET"])
 def save_recipe(username):
@@ -179,12 +198,18 @@ def save_recipe(username):
 @app.route("/<username>/cookbook/<recipe_name>")
 def view_cookbook_recipe(username, recipe_name):
 
+    if not g.user:
+        return redirect("/login")
+
     recipe = g.user.recipes.filter_by(title=recipe_name).first()
 
     return render_template("user/cookbook_recipe_detail.html", recipe=recipe)
 
 @app.route("/<username>/cookbook/<recipe_name>/delete", methods=["POST"])
 def delete_cookbook_recipe(username, recipe_name):
+
+    if not g.user:
+        return redirect("/login")
 
     recipe = g.user.recipes.filter_by(title=recipe_name).first()
 
@@ -193,11 +218,33 @@ def delete_cookbook_recipe(username, recipe_name):
 
     return redirect(f"/{username}/cookbook")
     
+@app.route("/<username>/cookbook/<recipe_name>/edit", methods=["POST", "GET"])
+def edit_cookbook_recipe(username, recipe_name):
 
+    if not g.user:
+        return redirect("/login")
 
-# cookbook/<username>/add GET/POST
+    recipe = g.user.recipes.filter_by(title=recipe_name).first()
+       
+    edit_form = RecipeEditForm()
 
-# cookbook/<username>/<recipe_id> GET
+    if edit_form.validate_on_submit():
+        try:
+            recipe.title = edit_form.title.data
+            recipe.recipe_image_url = edit_form.recipe_image.data
+            recipe.recipe_notes = edit_form.additional_notes.data
+            print(recipe.title)
+            db.session.add(recipe)
+            db.session.commit()
+        except IntegrityError:
+            print ("Error") # FLAGGED
+
+        return redirect(f"/{username}/cookbook/{recipe.title}")
+    else:
+        edit_form.title.data = recipe.title
+        edit_form.recipe_image.data = recipe.recipe_image_url
+        edit_form.additional_notes.data = recipe.recipe_notes
+        return render_template("user/edit_recipe_form.html", form=edit_form, recipe=recipe)
 
 
 
