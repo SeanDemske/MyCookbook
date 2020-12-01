@@ -110,7 +110,7 @@ def search_results():
         params={
             "q": search_query,
             "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": os.environ.get('APP_KEY', APP_KEY),
+            "app_key": APP_KEY,
             "to": "30"
         }
     )
@@ -128,7 +128,7 @@ def api_recipe_detail():
         params={
             "r": search_query,
             "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": os.environ.get('APP_KEY', APP_KEY)
+            "app_key": APP_KEY
         }
     )
 
@@ -179,7 +179,7 @@ def save_recipe(username):
         params={
             "r": search_query,
             "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": os.environ.get('APP_KEY', APP_KEY)
+            "app_key": APP_KEY
         }
     )
 
