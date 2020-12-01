@@ -1,6 +1,5 @@
 import os, requests, json
 from flask import Flask, render_template, request, jsonify, redirect, session, g
-from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
 from forms import RegisterForm, LoginForm, RecipeEditForm
 from utilities import password_confirmed
