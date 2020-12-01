@@ -16,7 +16,9 @@
                 {% endif %}
             </p>
             <div class="break"></div>
-            <button class="btn f-600"><i class="fas fa-book text-light"></i> Remove from cookbook</button>
+            <form action="/{{ g.user.username }}/cookbook/{{ recipe.title }}/delete" method="POST">
+                <button class="btn f-600"><i class="fas fa-book text-light"></i> Remove from cookbook</button>
+            </form>
             <div class="ingredients">
                 <h3 class="text-primary underline">Ingredients</h3>
                 <div>
