@@ -1,10 +1,5 @@
 ## MyCookbook
-
-<p>
-    A mobile responsive website for finding and keeping track of new recipes
-    <br />
-    <a href="https://myonlinecookbook.herokuapp.com/">View Live</a>
-</p>
+A mobile responsive website for finding and keeping track of new recipes <a href="https://myonlinecookbook.herokuapp.com/">View Live</a>
 
 ![Website](https://i.imgur.com/5N1sMIB.png)
 
