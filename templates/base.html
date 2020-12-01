@@ -25,11 +25,19 @@
                     </form>
                 </div>
                 <div class="nav-links">
+                    {% if not g.user %}
                     <ul>
                         <a href="/login" class="text-primary">Sign In</a>
                         <span class="text-light">|</span>
                         <a href="/register" class="text-primary">Sign Up</a>
                     </ul>
+                    {% else %}
+                    <ul>
+                        <a href="/{{ g.user.username }}/cookbook" class="text-primary">{{ g.user.username }}</a>
+                        <span class="text-light">|</span>
+                        <a href="/logout" class="text-primary">Logout</a>
+                    </ul>
+                    {% endif %}
                 </div>
             </div>
         </nav>

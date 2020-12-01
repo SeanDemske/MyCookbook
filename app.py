@@ -1,9 +1,12 @@
 import os, requests, json
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, session, g
 from secrets import APP_ID, APP_KEY
 from models import db, connect_db, User, Recipe
 from forms import RegisterForm, LoginForm
 from utilities import password_confirmed
+from sqlalchemy.exc import IntegrityError
+
+CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
 
@@ -18,6 +21,29 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "secret")
 
 connect_db(app)
+
+@app.before_request
+def add_user_to_g():
+    """If we have our stamp to get in, add curr user to Flask global."""
+
+    if CURR_USER_KEY in session:
+        g.user = User.query.get(session[CURR_USER_KEY])
+
+    else:
+        g.user = None
+
+def do_login(user):
+    """Log in user."""
+
+    session[CURR_USER_KEY] = user.username
+
+
+def do_logout():
+    """Logout user."""
+
+    if CURR_USER_KEY in session:
+        del session[CURR_USER_KEY]
+        g.user = None
 
 # View functions
 #----------------------------------------------------------------------
@@ -43,22 +69,36 @@ def user_register_form():
                     password=register_form.password.data
                 )
                 db.session.commit()
-
+                do_login(user)
             else:
-                print("passwords don't match")
+                print("passwords don't match") # FLAGGED
         except IntegrityError:
-            print ("Error")
+            print ("Error") # FLAGGED
 
+        return redirect("/")
+    else:
+        return render_template("signin_signup.html", form=register_form)
 
-    return render_template("signin_signup.html", form=register_form)
-
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def user_login_form():
     """Display login page"""
 
     login_form = LoginForm()
+    if login_form.validate_on_submit():
+        user = User.authenticate(login_form.username.data, login_form.password.data)
+        print(user)
+        if user:
+            do_login(user)
+            return redirect("/")
 
     return render_template("signin_signup.html", form=login_form)
+
+@app.route("/logout")
+def logout():
+    """Signs out the current user"""
+
+    do_logout()
+    return redirect("/")
 
 @app.route("/search")
 def search_results():
@@ -100,14 +140,60 @@ def api_recipe_detail():
 # User
 #----------------------------------------------------------------------
 
-@app.route("/cookbook/<username>")
-def usr(username):
-    """Route for testing UI"""
+@app.route("/<username>/cookbook")
+def cookbook_profile(username):
+    """Route to take the user to their profile/cookbook"""
 
-    return str("usr")
+    saved_recipes = g.user.recipes
 
+    return render_template("user/cookbook.html", recipes=saved_recipes)
 
-# cookbook/<username> GET
+@app.route("/<username>/cookbook/save", methods=["POST", "GET"])
+def save_recipe(username):
+
+    if not g.user:
+        return redirect("/login")
+
+    search_query = request.args["r"]
+    resp = requests.get(
+        "https://api.edamam.com/search",
+        params={
+            "r": search_query,
+            "app_id": APP_ID,
+            "app_key": APP_KEY
+        }
+    )
+
+    try:
+        recipe_json = resp.json()[0]
+        recipe_object = g.user.add_recipe(recipe_json, g.user.username)
+        db.session.add(recipe_object)
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return redirect(f"/{g.user.username}/cookbook")
+
+    
+    return redirect(f"/{g.user.username}/cookbook")
+
+@app.route("/<username>/cookbook/<recipe_name>")
+def view_cookbook_recipe(username, recipe_name):
+
+    recipe = g.user.recipes.filter_by(title=recipe_name).first()
+
+    return render_template("user/cookbook_recipe_detail.html", recipe=recipe)
+
+@app.route("/<username>/cookbook/<recipe_name>/delete", methods=["POST"])
+def delete_cookbook_recipe(username, recipe_name):
+
+    recipe = g.user.recipes.filter_by(title=recipe_name).first()
+
+    db.session.delete(recipe)
+    db.session.commit()
+
+    return redirect(f"/{username}/cookbook")
+    
+
 
 # cookbook/<username>/add GET/POST
 

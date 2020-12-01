@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="api-recipe-detail">
+        <div class="container">
+            <div class="header text-primary">
+                <img src="{{ recipe.recipe_image_url }}" alt="Image of {{ recipe.title }}">
+                <div class="title text-primary">{{ recipe.title }}</div>
+            </div>
+            <p class="text-secondary">
+                {% if recipe.total_minutes %}
+                    {{ recipe.total_minutes }} mins,
+                {% endif %}
+                {% if recipe.servings %}
+                    serves {{ recipe.servings|round|int }}
+                {% endif %}
+            </p>
+            <div class="break"></div>
+            <button class="btn f-600"><i class="fas fa-book text-light"></i> Remove from cookbook</button>
+            <div class="ingredients">
+                <h3 class="text-primary underline">Ingredients</h3>
+                <ul>
+                    {% autoescape false %}
+                    <p>{{ recipe.ingredient_list | replace("\n", "<br/>")  }}</p> 
+                    {% endautoescape %}
+                </ul>
+            </div>
+            <div class="source-url">
+                <a href="{{ recipe.source_url }}" class="link-tag">Recipe Website</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

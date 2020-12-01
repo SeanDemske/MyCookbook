@@ -9,7 +9,7 @@
                 </div>
                 <div class="break"></div>
                 <div class="lead underline">{{ form.form_title }}</div>
-                <form action="/register" method="POST">
+                <form action="/{{ form.form_title|lower }}" method="POST">
                     {{ form.hidden_tag() }}
 
                     {% for field in form if field.widget.input_type != 'hidden' %}

@@ -7,7 +7,7 @@
             <div class="recipes-container">
                 {% for result in results %}
                 <div class="recipe-card" data-id="{{ result.recipe.uri }}">
-                    <img src="{{ result.recipe.image }}" alt="">
+                    <img src="{{ result.recipe.image }}" alt="Recipe Image">
                     <div class="recipe-details">
                         <div class="label">
                             <span class="text-primary">{{ result.recipe.label|truncate(15, True) }}</span>
@@ -24,7 +24,13 @@
                                     {% endif %}
                                 </div>
                                 <div class="links">
-                                    <a href="" class="link-tag text-primary">+Save Recipe</a>
+                                    {% if g.user %}
+                                        <form action="/{{ g.user.username }}/cookbook/save?r={{ result.recipe.uri | urlencode }}" method="POST">
+                                            <button class="link-tag text-primary btn-link">+Save Recipe</button>
+                                        </form>
+                                    {% else %}
+                                        <a href="/login" class="link-tag text-primary">+Save Recipe</a>
+                                    {% endif %}
                                     <span>|</span>
                                     <a href='/recipes?r={{ result.recipe.uri | urlencode }}' class="link-tag text-primary">View Recipe</a>
                                 </div>

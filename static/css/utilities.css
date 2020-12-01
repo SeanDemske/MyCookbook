@@ -5,6 +5,19 @@
     margin: 5px 0 20px 0;
 }
 
+
+
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 /* Text */
 .text-primary {
     color: #353535;
@@ -105,6 +118,17 @@
 
 .btn:hover {
     filter: brightness(105%);
+}
+
+.btn.btn-outline {
+    background-color: transparent;
+    border: 3px solid #7DD060;
+    color: #7DD060;
+}
+
+.btn.btn-outline:hover {
+    background-color: #7DD060;
+    color: #fff;
 }
 
 /* Recipe Card */

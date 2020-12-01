@@ -2,6 +2,7 @@
 
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+from utilities import recipe_list_to_string
 
 bcrypt = Bcrypt()
 db = SQLAlchemy()
@@ -27,6 +28,32 @@ class User(db.Model):
                     nullable=True,
                     unique=True)
 
+    recipes = db.relationship("Recipe",
+                    backref="user",
+                    lazy='dynamic'
+    )
+
+    def __repr__(self):
+        return f"<User {self.username}: {self.email}>"
+
+    def add_recipe(self, recipe, username):
+        "Takes a dictionary and pulls the data to create a recipe instance and appends it to the user(self)"
+
+        ingredients = recipe_list_to_string(recipe.get("ingredientLines"))
+
+        return Recipe(
+            title=recipe.get("label", "Error"),
+            recipe_image_url=recipe.get("image", "/static/images/recipe_placeholder.png"),
+            source_url=recipe.get("url", "Source not found"),
+            servings=recipe.get("yield", "NA"),
+            calories=recipe.get("calories", "---"),
+            total_minutes=recipe.get("totalTime", "NA"),
+            ingredient_list=ingredients,
+            cookbook_owner=username
+        )
+
+        
+
     @classmethod
     def register(cls, username, email, password):
         """Creates a new user and adds it to the database. Returns user instance"""
@@ -36,6 +63,20 @@ class User(db.Model):
         db.session.add(user)
 
         return user
+
+    @classmethod
+    def authenticate(cls, username, password):
+        """Athenticates login credentials"""
+
+        user = cls.query.filter_by(username=username).first()
+        if not user:
+            return False
+
+        if bcrypt.check_password_hash(user.password, password):
+            return user
+        else:
+            return False
+
     
 class Recipe(db.Model):
     """Recipe"""
