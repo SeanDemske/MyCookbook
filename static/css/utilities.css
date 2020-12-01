@@ -103,6 +103,8 @@
 
 .badge-danger {
     background-color: rgb(182, 71, 51);
+    border: none;
+    color: white;
 }
 
 /* Buttons */
