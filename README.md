@@ -1,4 +1,4 @@
-<h3>Your online digital cookbook!</h3>
+## MyCookbook
 
 <p>
     A mobile responsive website for finding and keeping track of new recipes
