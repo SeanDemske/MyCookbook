@@ -6,7 +6,7 @@
     <a href="https://myonlinecookbook.herokuapp.com/">View Live</a>
 </p>
 
-![Website](https://i.imgur.com/qetG9cQ.png)
+![Website](https://i.imgur.com/5N1sMIB.png)
 
 ## Description
 
