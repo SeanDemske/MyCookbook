@@ -245,15 +245,3 @@ def edit_cookbook_recipe(username, recipe_name):
         edit_form.recipe_image.data = recipe.recipe_image_url
         edit_form.additional_notes.data = recipe.recipe_notes
         return render_template("user/edit_recipe_form.html", form=edit_form, recipe=recipe)
-
-
-
-# Developer
-#----------------------------------------------------------------------
-
-@app.route("/ui")
-def ui():
-    """Route for testing UI"""
-
-    return render_template("user/cookbook.html")
-
