@@ -108,8 +108,8 @@ def search_results():
         "https://api.edamam.com/search",
         params={
             "q": search_query,
-            "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": APP_KEY,
+            "app_id": os.environ.get('APP_ID', "APP_ID_GOES_HERE"),
+            "app_key": os.environ.get('APP_KEY', 'APP_KEY_GOES_HERE'),
             "to": "30"
         }
     )
@@ -126,8 +126,8 @@ def api_recipe_detail():
         "https://api.edamam.com/search",
         params={
             "r": search_query,
-            "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": APP_KEY
+            "app_id": os.environ.get('APP_ID', "APP_ID_GOES_HERE"),
+            "app_key": os.environ.get('APP_KEY', 'APP_KEY_GOES_HERE')
         }
     )
 
@@ -177,8 +177,8 @@ def save_recipe(username):
         "https://api.edamam.com/search",
         params={
             "r": search_query,
-            "app_id": os.environ.get('APP_ID', APP_ID),
-            "app_key": APP_KEY
+            "app_id": os.environ.get('APP_ID', 'APP_ID_GOES_HERE'),
+            "app_key": os.environ.get('APP_KEY', 'APP_KEY_GOES_HERE')
         }
     )
 
